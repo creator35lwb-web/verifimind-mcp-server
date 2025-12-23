@@ -14,8 +14,9 @@ ENV PORT=8080
 
 EXPOSE 8080
 
-# Increased start-period to 30s for model/prompt loading
-HEALTHCHECK --interval=5s --timeout=3s --start-period=30s --retries=3 \
-  CMD curl -f http://localhost:${PORT}/health || exit 1
+# Increased start-period to 60s for model/prompt loading on Smithery
+HEALTHCHECK --interval=10s --timeout=5s --start-period=60s --retries=5 \
+  CMD curl -f http://localhost:${PORT:-8080}/health || exit 1
 
-CMD ["sh", "-c", "uvicorn http_server:app --host 0.0.0.0 --port ${PORT}"]
+# Flexible PORT handling - use $PORT if set by Smithery, otherwise 8080
+CMD ["sh", "-c", "uvicorn http_server:app --host 0.0.0.0 --port ${PORT:-8080}"]
