@@ -2,14 +2,4 @@ runtime: "container"
 build:
   dockerfile: "Dockerfile"
   dockerBuildPath: "."
-startCommand:
-  type: "http"
-  configSchema:
-    type: "object"
-    properties:
-      apiKey:
-        type: "string"
-        description: "API key for LLM provider"
-    required: []
-  exampleConfig:
-    apiKey: "your-api-key"
+startCommand: "uvicorn http_server:app --host 0.0.0.0 --port 8080"

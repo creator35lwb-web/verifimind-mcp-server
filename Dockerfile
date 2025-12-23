@@ -14,7 +14,8 @@ ENV PORT=8080
 
 EXPOSE 8080
 
-HEALTHCHECK --interval=5s --timeout=3s --start-period=10s --retries=3 \
+# Increased start-period to 30s for model/prompt loading
+HEALTHCHECK --interval=5s --timeout=3s --start-period=30s --retries=3 \
   CMD curl -f http://localhost:${PORT}/health || exit 1
 
 CMD ["sh", "-c", "uvicorn http_server:app --host 0.0.0.0 --port ${PORT}"]
