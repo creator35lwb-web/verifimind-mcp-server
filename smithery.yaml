@@ -9,8 +9,7 @@ startCommand:
     properties:
       geminiApiKey:
         type: "string"
-        description: "Your Gemini API Key (get free at https://aistudio.google.com/app/apikey)"
+        description: "Gemini API Key (FREE at https://aistudio.google.com) - Optional, uses mock provider if not set"
       anthropicApiKey:
         type: "string"
-        description: "Your Anthropic API Key (optional, for Z and CS agents)"
-    required: ["geminiApiKey"]
+        description: "Anthropic API Key - Optional, for Z and CS agents"

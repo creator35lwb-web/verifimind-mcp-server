@@ -427,7 +427,7 @@ def get_provider(
     """
     # Get provider name from env if not specified
     if provider_name is None:
-        provider_name = os.getenv("VERIFIMIND_LLM_PROVIDER", "openai")
+        provider_name = os.getenv("VERIFIMIND_LLM_PROVIDER", "mock")
     
     provider_name = provider_name.lower()
     
