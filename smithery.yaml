@@ -1,15 +1,30 @@
+# VerifiMind PEAS MCP Server - Smithery Configuration
+# Version: 0.2.3
+# https://github.com/creator35lwb-web/verifimind-mcp-server
+
 runtime: "container"
+
 build:
   dockerfile: "Dockerfile"
   dockerBuildPath: "."
+
 startCommand:
   type: "http"
   configSchema:
     type: "object"
     properties:
-      geminiApiKey:
+      llm_provider:
         type: "string"
-        description: "Gemini API Key (FREE at https://aistudio.google.com) - Optional, uses mock provider if not set"
-      anthropicApiKey:
+        description: "LLM provider to use for AI agents (default: mock for testing)"
+        enum: ["mock", "gemini", "anthropic", "openai"]
+        default: "mock"
+      gemini_api_key:
         type: "string"
-        description: "Anthropic API Key - Optional, for Z and CS agents"
+        description: "Google Gemini API Key (FREE at https://aistudio.google.com) - Required if llm_provider is 'gemini'"
+      anthropic_api_key:
+        type: "string"
+        description: "Anthropic API Key - Required if llm_provider is 'anthropic'"
+      openai_api_key:
+        type: "string"
+        description: "OpenAI API Key - Required if llm_provider is 'openai'"
+    required: []

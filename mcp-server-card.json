@@ -1,12 +1,12 @@
 {
   "mcpServers": {
     "verifimind-genesis": {
-      "url": "https://server.smithery.ai/creator35lwb-web/verifimind-mcp-server/mcp",
+      "url": "https://server.smithery.ai/creator35lwb-web/verifimind-mcp-server/mcp/",
       "description": "VerifiMind PEAS Genesis Methodology - Multi-Model AI Validation System with RefleXion Trinity (X-Z-CS Agents)",
-      "transport": "http-sse",
-      "version": "0.2.1",
+      "transport": "streamable-http",
+      "version": "0.2.3",
       "endpoints": {
-        "mcp": "/mcp",
+        "mcp": "/mcp/",
         "health": "/health",
         "config": "/.well-known/mcp-config"
       },
@@ -14,8 +14,13 @@
       "tools": 4,
       "features": {
         "agents": ["X (Innovation)", "Z (Ethics)", "CS (Security)"],
-        "models": ["Gemini 2.0 Flash (FREE)", "Claude 3 Haiku"],
-        "cost_per_validation": "$0.003"
+        "models": ["Mock (FREE)", "Gemini 2.0 Flash (FREE)", "Claude 3 Haiku", "GPT-4"],
+        "byok": true,
+        "default_provider": "mock"
+      },
+      "headers": {
+        "Accept": "application/json, text/event-stream",
+        "Content-Type": "application/json"
       }
     }
   }
